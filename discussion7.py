@@ -51,7 +51,24 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
         dict mapping (neighbourhood_group, room_type) -> average_price (float)
         e.g. { ('Downtown', 'Entire home/apt'): 123.45, ... }
     """
-    pass
+    listings = []
+    
+    with open(full_path, 'r', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        
+        header = next(reader)
+        
+        for row in reader:
+            listing = {}
+            for i, value in enumerate(row):
+
+                if i < len(header):
+                    listing[header[i]] = value
+            
+
+            listings.append(listing)
+    
+    return listings
 
 
 
